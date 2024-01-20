@@ -75,5 +75,10 @@ Optionally, you can set a custom TTL for the certificate:
 ```bash
 vault write -field=signed_key ssh-client-signer/sign/administrator-role public_key=@$HOME/.ssh/id_rsa.pub ttl="30s" > $HOME/.ssh/id_rsa-cert.pub
 ```
-
+### Allow admin ssh role
+```bash
+path "ssh-client-signer/sign/administrator-role" {
+  capabilities = ["read", "create", "update", "list", "delete"]
+}
+```
 For more details, refer to the [HashiCorp blog post](https://www.hashicorp.com/blog/managing-ssh-access-at-scale-with-hashicorp-vault).
